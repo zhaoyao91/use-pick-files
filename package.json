@@ -29,9 +29,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "use-pick-file",
+  "name": "use-pick-files",
   "author": "赵耀",
-  "module": "dist/use-pick-file.esm.js",
+  "module": "dist/use-pick-files.esm.js",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.17",
