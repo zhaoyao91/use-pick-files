@@ -5,20 +5,19 @@ type Options = {
   accept?: string;
 };
 
-export const usePickFiles = ({
-  multiple,
-  accept,
-}: Options = {}): (() => Promise<File[]>) => {
+export const usePickFiles = (
+  defaultOptions: Options = {}
+): ((options?: Options) => Promise<File[]>) => {
   const inputRef = useRef<any>();
   const resolveRef = useRef<any>();
 
   useEffect(() => {
     const input = document.createElement('input');
+
     input.setAttribute('type', 'file');
     input.classList.add('use-pick-files');
     input.style.display = 'none';
-    if (multiple) input.setAttribute('multiple', '');
-    if (accept) input.setAttribute('accept', accept);
+
     input.addEventListener('change', e => {
       // @ts-ignore
       resolveRef.current?.(Array.from(e.target.files));
@@ -32,12 +31,36 @@ export const usePickFiles = ({
     return () => {
       document.body.removeChild(input);
     };
-  }, [multiple, accept]);
+  }, []);
 
-  return useCallback(() => {
-    inputRef.current.click();
-    return new Promise(resolve => {
-      resolveRef.current = resolve;
-    });
-  }, [inputRef]);
+  return useCallback(
+    (options: Options = {}) => {
+      setupInput(inputRef.current, {
+        ...defaultOptions,
+        ...options,
+      });
+      inputRef.current.click();
+      return new Promise(resolve => {
+        resolveRef.current = resolve;
+      });
+    },
+    [inputRef, defaultOptions.accept, defaultOptions.multiple]
+  );
 };
+
+function setupInput(
+  input: HTMLInputElement,
+  { accept, multiple }: Options = {}
+) {
+  if (multiple) {
+    input.setAttribute('multiple', '');
+  } else {
+    input.removeAttribute('multiple');
+  }
+
+  if (accept) {
+    input.setAttribute('accept', accept);
+  } else {
+    input.removeAttribute('accept');
+  }
+}

@@ -14,7 +14,16 @@ export const Default = () => {
           pickFile().then(files => console.log(files));
         }}
       >
-        选择文件
+        批量选择图片
+      </button>
+      <button
+        onClick={() => {
+          pickFile({ accept: 'image/png', multiple: false }).then(files =>
+            console.log(files)
+          );
+        }}
+      >
+        选择单个 png
       </button>
     </div>
   );

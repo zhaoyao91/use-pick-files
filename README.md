@@ -19,7 +19,7 @@ import * as React from 'react';
 import { usePickFiles } from 'use-pick-files';
 
 const Demo = () => {
-  const pickFiles = usePickFiles({ accept: 'image/*', multiple: true });
+  const pickFiles = usePickFiles();
   return (
     <div>
       <button
@@ -37,10 +37,20 @@ const Demo = () => {
 };
 ```
 
-## Options
+## API
 
-- accept?: string
-- multiple?: boolean
+### usePickFile
+
+`(defaultOptions?: Options) => pickFiles`
+
+### pickFiles
+
+`(options?: Options) => Promise<File[]>`
+
+### Options
+
+- `accept?: string`
+- `multiple?: boolean`
 
 ## License
 
