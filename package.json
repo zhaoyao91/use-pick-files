@@ -1,6 +1,6 @@
 {
   "name": "use-pick-files",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "React hook which provides a `pickFiles` function to help you open a dialog to pick files.",
   "module": "dist/use-pick-files.esm.js",
   "main": "dist/index.js",

@@ -36,7 +36,8 @@ export const usePickFiles = (
   return useCallback(
     (options: Options = {}) => {
       setupInput(inputRef.current, {
-        ...defaultOptions,
+        accept: defaultOptions.accept,
+        multiple: defaultOptions.multiple,
         ...options,
       });
       inputRef.current.click();
