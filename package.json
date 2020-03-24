@@ -1,8 +1,11 @@
 {
+  "name": "use-pick-files",
   "version": "0.1.0",
-  "license": "MIT",
+  "author": "赵耀",
+  "module": "dist/use-pick-files.esm.js",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "license": "MIT",
   "files": [
     "dist"
   ],
@@ -15,9 +18,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "peerDependencies": {
-    "react": ">=16.8"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -29,9 +29,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "use-pick-files",
-  "author": "赵耀",
-  "module": "dist/use-pick-files.esm.js",
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.17",
