@@ -5,7 +5,10 @@ type Options = {
   accept?: string;
 };
 
-export const usePickFiles = ({ multiple, accept }: Options = {}) => {
+export const usePickFiles = ({
+  multiple,
+  accept,
+}: Options = {}): (() => Promise<File[]>) => {
   const inputRef = useRef<any>();
   const resolveRef = useRef<any>();
 
